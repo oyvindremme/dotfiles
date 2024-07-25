@@ -1,6 +1,7 @@
 local wezterm = require 'wezterm';
 
 return {
+  hide_mouse_cursor_when_typing = false,
   enable_wayland = true,
   keys = {
     -- Resize pane
