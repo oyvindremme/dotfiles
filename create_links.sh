@@ -2,15 +2,17 @@
 
 # Define the source and target paths
 declare -A links=(
-  [".wezterm"]="~/.wezterm"
-  [".zshrc"]="~/.zshrc"
-  ["better-vim.lua"]="~/.config/better-vim/better-vim.lua"
-  ["starship.toml"]="~/.config/starship.toml"
+  [".wezterm"]="$HOME/.wezterm"
+  [".zshrc"]="$HOME/.zshrc"
+  ["better-vim.lua"]="$HOME/.config/better-vim/better-vim.lua"
+  ["starship.toml"]="$HOME/.config/starship.toml"
 )
 
-# Create the symbolic links
+# Create necessary directories and symbolic links
 for source in "${!links[@]}"; do
   target=${links[$source]}
+  dir=$(dirname "$target")
+  mkdir -p "$dir"
   ln -sf "$(pwd)/$source" "$target"
   echo "Created link: $source -> $target"
 done
