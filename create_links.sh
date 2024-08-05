@@ -2,7 +2,7 @@
 
 # Define the source and target paths
 declare -A links=(
-  [".wezterm"]="$HOME/.wezterm"
+  [".wezterm.lua"]="$HOME/.wezterm.lua"
   [".zshrc"]="$HOME/.zshrc"
   ["better-vim.lua"]="$HOME/.config/better-vim/better-vim.lua"
   ["starship.toml"]="$HOME/.config/starship.toml"
