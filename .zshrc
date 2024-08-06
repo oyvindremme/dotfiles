@@ -113,6 +113,5 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(starship init zsh)"
 
 export PATH="$PATH:$HOME/.local/share/yabridge"
-export OPENAI_API_KEY=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
 
 neofetch
