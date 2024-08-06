@@ -17,6 +17,7 @@ return {
     {key="K", mods="CTRL|SHIFT|ALT", action=wezterm.action{ActivatePaneDirection="Up"}},
     -- Move to the pane below
     {key="J", mods="CTRL|SHIFT|ALT", action=wezterm.action{ActivatePaneDirection="Down"}},
-    {key="w", mods="CTRL", action=wezterm.action.CloseCurrentPane { confirm = true }}
+    {key="w", mods="CTRL", action=wezterm.action.CloseCurrentPane { confirm = true }},
+    {key="t", mods="CTRL", action=wezterm.action.SpawnTab 'DefaultDomain'}
   },
 }

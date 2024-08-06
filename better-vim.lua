@@ -1,7 +1,8 @@
 return {
   lsps = {
     phpactor = {},
-    ast_grep = {}
+    ast_grep = {},
+    mdx_analyzer = {}
  },
   treesitter = "all",
   theme = {
