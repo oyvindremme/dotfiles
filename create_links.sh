@@ -30,9 +30,9 @@ else
 fi
 
 # Install Nerd Font
-NERD_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip"
+NERD_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Gohu.zip"
 FONT_DIR="$HOME/.local/share/fonts"
-FONT_NAME="Hack"
+FONT_NAME="Gohu"
 
 echo "Downloading and installing $FONT_NAME Nerd Font..."
 mkdir -p "$FONT_DIR"
