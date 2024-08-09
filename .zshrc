@@ -114,4 +114,6 @@ eval "$(starship init zsh)"
 
 export PATH="$PATH:$HOME/.local/share/yabridge"
 
+source ~/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
 neofetch

@@ -42,6 +42,9 @@ return {
       }
 
     }
+  },
+  plugins = {
+    "github/copilot.vim"
   }
 }
 

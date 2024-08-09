@@ -35,14 +35,11 @@ fi
 if ! command -v tabby &> /dev/null; then
   echo "Installing Tabby..."
   if [ "$PACKAGE_MANAGER" == "apt-get" ]; then
-    wget -qO- https://packagecloud.io/Tabby/release/gpgkey | sudo apt-key add -
-    sudo sh -c 'echo "deb https://packagecloud.io/Tabby/release/ubuntu/ $(lsb_release -cs) main" > /etc/apt/sources.list.d/tabby.list'
-    sudo apt-get update
-    sudo apt-get install -y tabby
+    wget "https://github.com/Eugeny/tabby/releases/download/v1.0.211/tabby-1.0.211-linux-x64.deb"
+    sudo apt install -y ./tabby-1.0.211-linux-x64.deb
   elif [ "$PACKAGE_MANAGER" == "dnf" ]; then
-    sudo rpm --import https://packagecloud.io/Tabby/release/gpgkey
-    sudo sh -c 'echo -e "[tabby]\nname=Tabby\nbaseurl=https://packagecloud.io/Tabby/release/el/7/x86_64\ngpgcheck=1\nenabled=1\ngpgkey=https://packagecloud.io/Tabby/release/gpgkey" > /etc/yum.repos.d/tabby.repo'
-    sudo dnf install -y tabby
+    wget "https://github.com/Eugeny/tabby/releases/download/v1.0.211/tabby-1.0.211-linux-x64.rpm"
+    sudo dnf install -y ./tabby-1.0.211-linux-x64.rpm
   fi
 else
   echo "Tabby is already installed."
@@ -61,9 +58,9 @@ else
 fi
 
 # Install Nerd Font
-NERD_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Gohu.zip"
+NERD_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip"
 FONT_DIR="$HOME/.local/share/fonts"
-FONT_NAME="Gohu"
+FONT_NAME="Hack"
 
 echo "Downloading and installing $FONT_NAME Nerd Font..."
 mkdir -p "$FONT_DIR"
@@ -87,7 +84,6 @@ fi
 
 # Define the source and target paths for configuration files
 declare -A links=(
-  [".wezterm.lua"]="$HOME/.wezterm.lua"
   [".zshrc"]="$HOME/.zshrc"
   ["better-vim.lua"]="$HOME/.config/better-vim/better-vim.lua"
   ["starship.toml"]="$HOME/.config/starship.toml"
