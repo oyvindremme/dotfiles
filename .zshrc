@@ -1,4 +1,3 @@
-alias minenotater="cd /mnt/c/Users/149212-04/Documents/notater"
 alias please="sudo"
 alias spotifycli="python3 -m spotifycli"
 alias python=python3
