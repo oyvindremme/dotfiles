@@ -1,3 +1,4 @@
+alias browsh="docker run -it --rm browsh/browsh"
 alias please="sudo"
 alias spotifycli="python3 -m spotifycli"
 alias python=python3
@@ -116,3 +117,4 @@ export PATH="$PATH:$HOME/.local/share/yabridge"
 source ~/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 neofetch
+export PATH=$PATH:/usr/local/go/bin/
