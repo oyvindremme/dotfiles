@@ -9,16 +9,12 @@ else
   echo "Zsh is already installed."
 fi
 
-# Install WezTerm
-if ! command -v wezterm &> /dev/null; then
-  echo "Installing WezTerm..."
-  # Download and install WezTerm
-  curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
-  echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
-  sudo apt update
-  sudo apt install wezterm
+# Install kitty
+if ! command -v kitty &> /dev/null; then
+  echo "Installing Kitty..."
+  sudo apt-get update && sudo apt-get install -y kitty
 else
-  echo "WezTerm is already installed."
+  echo "Kitty is already installed."
 fi
 
 # Install fontconfig
@@ -30,7 +26,7 @@ else
 fi
 
 # Install Nerd Font
-NERD_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Gohu.zip"
+NERD_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip"
 FONT_DIR="$HOME/.local/share/fonts"
 FONT_NAME="Gohu"
 
@@ -56,7 +52,7 @@ fi
 
 # Define the source and target paths for configuration files
 declare -A links=(
-  [".wezterm.lua"]="$HOME/.wezterm.lua"
+  ["kitty.conf"]="$HOME/.config/kitty/kitty.conf"
   [".zshrc"]="$HOME/.zshrc"
   ["better-vim.lua"]="$HOME/.config/better-vim/better-vim.lua"
   ["starship.toml"]="$HOME/.config/starship.toml"
