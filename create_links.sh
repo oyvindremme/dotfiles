@@ -1,9 +1,21 @@
 #!/bin/bash
 
+# Function to install a package using the appropriate package manager
+install_package() {
+  if command -v apt-get &> /dev/null; then
+    sudo apt-get update && sudo apt-get install -y "$1"
+  elif command -v pacman &> /dev/null; then
+    sudo pacman -Syu --noconfirm "$1"
+  else
+    echo "Unsupported package manager. Please install $1 manually."
+    exit 1
+  fi
+}
+
 # Install Zsh
 if ! command -v zsh &> /dev/null; then
   echo "Installing Zsh..."
-  sudo apt-get update && sudo apt-get install -y zsh
+  install_package zsh
   chsh -s $(which zsh)
 else
   echo "Zsh is already installed."
@@ -12,7 +24,7 @@ fi
 # Install kitty
 if ! command -v kitty &> /dev/null; then
   echo "Installing Kitty..."
-  sudo apt-get update && sudo apt-get install -y kitty
+  install_package kitty
 else
   echo "Kitty is already installed."
 fi
@@ -20,7 +32,7 @@ fi
 # Install fontconfig
 if ! command -v fc-cache &> /dev/null; then
   echo "Installing fontconfig..."
-  sudo apt update && sudo apt install -y fontconfig
+  install_package fontconfig
 else
   echo "fontconfig is already installed"
 fi
