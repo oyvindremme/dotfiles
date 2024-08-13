@@ -31,6 +31,11 @@ return {
     end,
   },
   mappings = {
+    by_mode = {
+      i = {
+        vim.api.nvim_create_user_command('RemoveCR', ':%s/\\r//g', {})
+      },
+    },
     custom = {
       ["<C-d>"] = {
         "<C-d>zz",
