@@ -12,6 +12,10 @@ install_package() {
   fi
 }
 
+# Prompt BetterVim API Key
+echo "Enter your BetterVim API Key:"
+read bvApiKey
+
 # Install Zsh
 if ! command -v zsh &> /dev/null; then
   echo "Installing Zsh..."
@@ -21,12 +25,18 @@ else
   echo "Zsh is already installed."
 fi
 
-# Install kitty
-if ! command -v kitty &> /dev/null; then
-  echo "Installing Kitty..."
-  install_package kitty
+# Install Oh My Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Install BetterVim
+curl -L https://bettervim.com/install/$bvApiKey | bash
+
+# Install wezterm
+if ! command -v wezterm &> /dev/null; then
+  echo "Installing Wezterm..."
+  install_package wezterm
 else
-  echo "Kitty is already installed."
+  echo "Wezterm is already installed."
 fi
 
 # Install fontconfig
@@ -40,7 +50,7 @@ fi
 # Install Nerd Font
 NERD_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Hack.zip"
 FONT_DIR="$HOME/.local/share/fonts"
-FONT_NAME="Gohu"
+FONT_NAME="Hack"
 
 echo "Downloading and installing $FONT_NAME Nerd Font..."
 mkdir -p "$FONT_DIR"
@@ -64,7 +74,6 @@ fi
 
 # Define the source and target paths for configuration files
 declare -A links=(
-  ["kitty.conf"]="$HOME/.config/kitty/kitty.conf"
   [".zshrc"]="$HOME/.zshrc"
   ["better-vim.lua"]="$HOME/.config/better-vim/better-vim.lua"
   ["starship.toml"]="$HOME/.config/starship.toml"
