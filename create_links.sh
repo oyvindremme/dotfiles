@@ -78,6 +78,7 @@ declare -A links=(
   ["better-vim.lua"]="$HOME/.config/better-vim/better-vim.lua"
   ["starship.toml"]="$HOME/.config/starship.toml"
   ["hyprland.conf"]="$HOME/.config/hypr/hyprland.conf"
+  ["hyprpaper.conf"]="$HOME/.config/hypr/hyprpaper.conf"
 )
 
 # Create necessary directories and symbolic links
