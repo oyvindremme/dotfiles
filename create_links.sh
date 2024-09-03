@@ -25,9 +25,6 @@ else
   echo "Zsh is already installed."
 fi
 
-# Install Oh My Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 # Install BetterVim
 curl -L https://bettervim.com/install/$bvApiKey | bash
 
@@ -77,8 +74,6 @@ declare -A links=(
   [".zshrc"]="$HOME/.zshrc"
   ["better-vim.lua"]="$HOME/.config/better-vim/better-vim.lua"
   ["starship.toml"]="$HOME/.config/starship.toml"
-  ["hyprland.conf"]="$HOME/.config/hypr/hyprland.conf"
-  ["hyprpaper.conf"]="$HOME/.config/hypr/hyprpaper.conf"
 )
 
 # Create necessary directories and symbolic links
@@ -89,5 +84,8 @@ for source in "${!links[@]}"; do
   ln -sf "$(pwd)/$source" "$target"
   echo "Created link: $source -> $target"
 done
+
+# Install Oh My Zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 echo "Installation and setup complete!"
