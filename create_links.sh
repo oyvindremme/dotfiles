@@ -28,12 +28,12 @@ fi
 # Install BetterVim
 curl -L https://bettervim.com/install/$bvApiKey | bash
 
-# Install wezterm
-if ! command -v wezterm &> /dev/null; then
-  echo "Installing Wezterm..."
-  install_package wezterm
+# Install alacritty
+if ! command -v alacritty &> /dev/null; then
+  echo "Installing Alacritty..."
+  install_package alacritty
 else
-  echo "Wezterm is already installed."
+  echo "Alacritty is already installed."
 fi
 
 # Install fontconfig
@@ -74,6 +74,8 @@ declare -A links=(
   [".zshrc"]="$HOME/.zshrc"
   ["better-vim.lua"]="$HOME/.config/better-vim/better-vim.lua"
   ["starship.toml"]="$HOME/.config/starship.toml"
+  ["hypr/hyprland.conf"]="$HOME/.config/hypr/hyprland.conf"
+  ["hypr/hyprpaper.conf"]="$HOME/.config/hypr/hyprpaper.conf"
 )
 
 # Create necessary directories and symbolic links
@@ -84,6 +86,9 @@ for source in "${!links[@]}"; do
   ln -sf "$(pwd)/$source" "$target"
   echo "Created link: $source -> $target"
 done
+
+# Copy waybar files
+cp $HOME/dotfiles/waybar/* $HOME/.config/waybar
 
 # Install Oh My Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
