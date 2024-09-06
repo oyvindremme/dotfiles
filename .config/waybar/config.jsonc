@@ -21,9 +21,7 @@
         "pulseaudio",
         "backlight",
         "battery",
-        "clock",
-        "keyboard-state",
-        "tray"
+        "clock"
     ],
     // Modules configuration
     // "sway/workspaces": {
