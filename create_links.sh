@@ -16,15 +16,6 @@ install_package() {
 echo "Enter your BetterVim API Key:"
 read bvApiKey
 
-# Install Zsh
-if ! command -v zsh &> /dev/null; then
-  echo "Installing Zsh..."
-  install_package zsh
-  chsh -s $(which zsh)
-else
-  echo "Zsh is already installed."
-fi
-
 # Install BetterVim
 curl -L https://bettervim.com/install/$bvApiKey | bash
 
@@ -72,10 +63,10 @@ fi
 # Define the source and target paths for configuration files
 declare -A links=(
   [".zshrc"]="$HOME/.zshrc"
-  ["better-vim.lua"]="$HOME/.config/better-vim/better-vim.lua"
-  ["starship.toml"]="$HOME/.config/starship.toml"
-  ["hypr/hyprland.conf"]="$HOME/.config/hypr/hyprland.conf"
-  ["hypr/hyprpaper.conf"]="$HOME/.config/hypr/hyprpaper.conf"
+  [".config/better-vim/better-vim.lua"]="$HOME/.config/better-vim/better-vim.lua"
+  [".config/starship.toml"]="$HOME/.config/starship.toml"
+  [".config/hypr/hyprland.conf"]="$HOME/.config/hypr/hyprland.conf"
+  [".config/hypr/hyprpaper.conf"]="$HOME/.config/hypr/hyprpaper.conf"
 )
 
 # Create necessary directories and symbolic links
@@ -88,7 +79,19 @@ for source in "${!links[@]}"; do
 done
 
 # Copy waybar files
-cp $HOME/dotfiles/waybar/* $HOME/.config/waybar
+cp $HOME/dotfiles/.config/waybar/* $HOME/.config/waybar
+
+# Copy Tokyo image
+cp $HOME/dotfiles/images/tokyo.jpg $HOME/Pictures
+
+# Install Zsh
+if ! command -v zsh &> /dev/null; then
+  echo "Installing Zsh..."
+  install_package zsh
+  chsh -s $(which zsh)
+else
+  echo "Zsh is already installed."
+fi
 
 # Install Oh My Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
