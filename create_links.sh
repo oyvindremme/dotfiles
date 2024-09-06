@@ -67,6 +67,13 @@ declare -A links=(
   [".config/starship.toml"]="$HOME/.config/starship.toml"
   [".config/hypr/hyprland.conf"]="$HOME/.config/hypr/hyprland.conf"
   [".config/hypr/hyprpaper.conf"]="$HOME/.config/hypr/hyprpaper.conf"
+  [".config/hypr/hyprpaper.conf"]="$HOME/.config/hypr/hyprpaper.conf"
+  [".config/waybar/config.jsonc"]="$HOME/.config/waybar/config.jsonc"
+  [".config/waybar/launch.sh"]="$HOME/.config/waybar/launch.sh"
+  [".config/waybar/module.json"]="$HOME/.config/waybar/module.json"
+  [".config/waybar/style.css"]="$HOME/.config/waybar/style.css"
+  [".config/waybar/themeswitcher.sh"]="$HOME/.config/waybar/themeswitcher.sh"
+  [".config/waybar/toggle.sh"]="$HOME/.config/waybar/toggle.sh"
 )
 
 # Create necessary directories and symbolic links
@@ -77,9 +84,6 @@ for source in "${!links[@]}"; do
   ln -sf "$(pwd)/$source" "$target"
   echo "Created link: $source -> $target"
 done
-
-# Copy waybar files
-cp $HOME/dotfiles/.config/waybar/* $HOME/.config/waybar
 
 # Copy Tokyo image
 cp $HOME/dotfiles/images/tokyo.jpg $HOME/Pictures
