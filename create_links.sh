@@ -1,5 +1,7 @@
 #!/bin/bash
 
+distro=$(grep ^NAME= /etc/os-release | cut -d'=' -f2 | tr -d '"')
+
 # Function to install a package using the appropriate package manager
 install_package() {
   if command -v apt-get &> /dev/null; then
@@ -65,15 +67,19 @@ declare -A links=(
   [".zshrc"]="$HOME/.zshrc"
   [".config/better-vim/better-vim.lua"]="$HOME/.config/better-vim/better-vim.lua"
   [".config/starship.toml"]="$HOME/.config/starship.toml"
-  [".config/hypr/hyprland.conf"]="$HOME/.config/hypr/hyprland.conf"
-  [".config/hypr/hyprpaper.conf"]="$HOME/.config/hypr/hyprpaper.conf"
-  [".config/hypr/hyprpaper.conf"]="$HOME/.config/hypr/hyprpaper.conf"
-  [".config/waybar/config.jsonc"]="$HOME/.config/waybar/config.jsonc"
-  [".config/waybar/launch.sh"]="$HOME/.config/waybar/launch.sh"
-  [".config/waybar/module.json"]="$HOME/.config/waybar/module.json"
-  [".config/waybar/style.css"]="$HOME/.config/waybar/style.css"
-  [".config/waybar/themeswitcher.sh"]="$HOME/.config/waybar/themeswitcher.sh"
-  [".config/waybar/toggle.sh"]="$HOME/.config/waybar/toggle.sh"
+  if ["$distro" == "Arch Linux"]; then
+    [".config/hypr/hyprland.conf"]="$HOME/.config/hypr/hyprland.conf"
+    [".config/hypr/hyprpaper.conf"]="$HOME/.config/hypr/hyprpaper.conf"
+    [".config/hypr/hyprpaper.conf"]="$HOME/.config/hypr/hyprpaper.conf"
+    [".config/waybar/config.jsonc"]="$HOME/.config/waybar/config.jsonc"
+    [".config/waybar/launch.sh"]="$HOME/.config/waybar/launch.sh"
+    [".config/waybar/module.json"]="$HOME/.config/waybar/module.json"
+    [".config/waybar/style.css"]="$HOME/.config/waybar/style.css"
+    [".config/waybar/themeswitcher.sh"]="$HOME/.config/waybar/themeswitcher.sh"
+    [".config/waybar/toggle.sh"]="$HOME/.config/waybar/toggle.sh"
+  else
+    echo "Skipping hyprland configurations. Not running Arch Linux."
+  fi
 )
 
 # Create necessary directories and symbolic links
