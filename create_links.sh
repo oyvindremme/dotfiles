@@ -32,8 +32,8 @@ fi
 # Define the source and target paths for configuration files
 declare -A links=(
   [".zshrc"]="$HOME/.zshrc"
-  [".config/better-vim/better-vim.lua"]="$HOME/.config/better-vim/better-vim.lua"
-  [".config/starship.toml"]="$HOME/.config/starship.toml"
+  ["better-vim.lua"]="$HOME/.config/better-vim/better-vim.lua"
+  ["starship.toml"]="$HOME/.config/starship.toml"
 )
 
 # Create necessary directories and symbolic links
